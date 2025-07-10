@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::parent(~{::#content}, ~{::title})}">
+<head>
+  <title>Home</title>
+</head>
+
+<body>
+<div id="content">
+
+		<!-- Navbar -->
+		<nav class="fixed top-0 w-full z-50 bg-white shadow-md">
+		  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+		    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+		        <img src="/image/logo.png" class="h-8" alt="Logo" />
+		        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Real Trust</span>
+		    </a>
+		    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100" aria-controls="navbar-default" aria-expanded="false">
+		      <span class="sr-only">Open main menu</span>
+		      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+		        <path fill-rule="evenodd" d="M3 5h14M3 10h14M3 15h14" clip-rule="evenodd"></path>
+		      </svg>
+		    </button>
+		    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+		      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
+		        <li><a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700">Home</a></li>
+		        <li><a href="#services" class="block py-2 px-3 text-gray-700 hover:text-blue-700">Services</a></li>
+		        <li><a href="#about" class="block py-2 px-3 text-gray-700 hover:text-blue-700">About Us</a></li>
+		        <li><a href="#projects" class="block py-2 px-3 text-gray-700 hover:text-blue-700">Projects</a></li>
+		        <li><a href="#clients" class="block py-2 px-3 text-gray-700 hover:text-blue-700">Client</a></li>
+		        <li><a href="/" class="block py-2 px-3 text-gray-700 hover:text-blue-700">Contacts</a></li>
+		        <li>
+		          <a th:href="@{'/login'}" class="block py-2 px-3 text-white bg-orange-500 rounded-md hover:bg-orange-600 transition text-center">
+					  Admin
+					</a>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		
+<!-- Hero Section -->
+<section id="home" class="relative w-full h-[600px] bg-cover bg-center mt-20 flex items-center justify-between px-10" style="background-image: url('/image/landing.jpg');">
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Left Content -->
+  <div class="z-10 w-1/2 text-white space-y-4 pl-6">
+    <h1 class="text-5xl font-bold leading-tight">Consultation,<br />Design,<br />& Marketing</h1>
+  </div>
+
+  <!-- Right Form Box -->
+<div class="z-10 w-96 mx-auto  bg-blue-800/60 p-8 rounded-lg shadow-lg text-white">
+  <h3 class="text-xl font-bold text-center mb-4">Get a Free Consultation</h3>
+	<div th:if="${successMessage}" class="bg-green-200 text-green-800 p-2 rounded mb-4">
+	  <p th:text="${successMessage}"></p>
+	</div>
+  
+  <form th:action="@{'/admin/contact'}" method="post" class="space-y-4">
+    <input type="text" name="name" placeholder="Full Name" class="w-full px-4 py-2 rounded-md text-black" required />
+    <input type="email" name="email" placeholder="Enter Email Address" class="w-full px-4 py-2 rounded-md text-black" required />
+    <input type="text" name="mobile" placeholder="Mobile Number" class="w-full px-4 py-2 rounded-md text-black" required />
+    <input type="text" name="city" placeholder="Your City" class="w-full px-4 py-2 rounded-md text-black" required />
+    <button type="submit" class="w-full py-2 rounded-md bg-orange-500 hover:bg-orange-600 transition">Get Quick Quote</button>
+  </form>
+</div>
+
+</section>
+
+
+<!-- About & Why Choose Us Section -->
+<section id="services" class="py-20 pt-24 bg-blue-50 h-[350px]">
+  <div class="max-w-screen-xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Left Content -->
+    <div>
+      <h2 class="text-3xl font-bold pt-24 text-blue-700 mb-4">Not Your Average Realtor</h2>
+      <p class="text-gray-600">
+        Real Trust is an agency for selling & property solutions, brand building design, and effective advertising to get the results you expect with the trust you value.
+      </p>
+    </div>
+
+    <!-- Right Images -->
+    <div class="flex justify-center items-center relative">
+      <div class="w-60 h-60 rounded-full overflow-hidden border-4 border-white shadow-lg absolute top-0 left-1/3">
+        <img src="/image/img2.jpg" alt="person 1" class="w-full h-full object-cover" />
+      </div>
+      <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg absolute top-50 right-0">
+        <img src="/image/img3.jpg" alt="person 2" class="w-full h-full object-cover" />
+      </div>
+      <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg absolute top-24 right-0">
+        <img src="/image/imge1.webp" alt="person 3" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+  </section>
+  
+
+  <section  class="py-20 bg-gray-100 h-[600px]">
+  <!-- Why Choose Us -->
+  <div class="mt-32 text-center pt-20 px-20">
+    <h2 class="text-2xl font-bold text-blue-700 mb-2">Why Choose Us?</h2>
+    <div class="w-20 rounded-full h-2 bg-blue-600 mx-auto mb-10"></div>
+
+    <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+      <!-- Card 1 -->
+      <div class="text-center px-4">
+        <div class="mx-auto w-16 h-16 bg-blue-50 flex items-center justify-center rounded-full mb-4">
+          <i class="fas fa-home text-blue-600 text-2xl"></i>
+        </div>
+        <h4 class="font-semibold text-blue-700 mb-2">Potential ROI</h4>
+        <p class="text-gray-600">Whether you're selling or buying, we help maximize your return or value potential.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="text-center px-4 ">
+        <div class="mx-auto w-16 h-16 bg-blue-50 flex items-center justify-center rounded-full mb-4">
+          <i class="fas fa-paint-brush text-blue-600 text-2xl"></i>
+        </div>
+        <h4 class="font-semibold text-blue-700 mb-2">Design</h4>
+        <p class="text-gray-600">Our designs and interior layout make the property appealing and increase the market value.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="text-center px-4">
+        <div class="mx-auto w-16 h-16 bg-blue-50 flex items-center justify-center rounded-full mb-4">
+          <i class="fas fa-bullhorn text-blue-600 text-2xl"></i>
+        </div>
+        <h4 class="font-semibold text-blue-700 mb-2">Marketing</h4>
+        <p class="text-gray-600">Using latest tools and smart strategy to get your listing maximum visibility and ROI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="py-20 px-4 md:px-20 pt-34 bg-white relative overflow-hidden">
+  <!-- Decorative Background Circles -->
+  <div class="absolute top-10 left-10 w-20 h-20 bg-blue-100 rounded-full opacity-30 z-0"></div>
+  <div class="absolute bottom-10 right-10 w-32 h-32 bg-orange-100 rounded-full opacity-20 z-0"></div>
+
+  <!-- Image Grid -->
+  <div class="relative z-10 flex flex-wrap justify-center items-center gap-6 mb-12">
+    <!-- Left Image -->
+    <div class="relative w-36 h-36 md:w-40 md:h-40 rounded overflow-hidden shadow-lg">
+      <img src="/image/about1.webp" alt="Handshake" class="w-full h-full object-cover" />
+      <!-- Accent -->
+      <div class="absolute top-0 w-4 h-4 border-t-4 border-l-4 border-orange-500"></div>
+    </div>
+
+    <!-- Center Image -->
+    <div class="relative w-64 h-44 md:w-80 md:h-52 rounded overflow-hidden shadow-xl">
+      <img src="/image/about2.webp" alt="Discussion" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Right Image -->
+    <div class="relative w-36 h-36 md:w-40 md:h-40 rounded overflow-hidden shadow-lg">
+      <img src="/image/about3.webp" alt="Clients" class="w-full h-full object-cover" />
+      <!-- Accent -->
+      <div class="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-blue-600"></div>
+    </div>
+  </div>
+  <!-- Content Container -->
+  <div class="relative z-10 text-center mb-12">
+    <h2 class="text-3xl font-bold text-blue-700 mb-2">About Us</h2>
+    <div class="h-1 w-20 bg-blue-600 mx-auto mb-4 rounded"></div>
+    <p class="max-w-2xl mx-auto text-gray-600 px-4">
+      Fifteen years of experience in real estate, excellent customer service and a
+      commitment to work hard, listen and follow through. We provide quality services to
+      build relationships with clients and, more importantly, maintain those relationships
+      by communicating effectively.
+    </p>
+  </div>
+
+
+  <!-- Learn More Button -->
+  <div class="text-center">
+    <a href="#about" class="inline-block border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition px-6 py-2 rounded">
+      Learn More
+    </a>
+  </div>
+</section>
+
+
+
+<!-- Our Projects -->
+<section id="projects" class="py-16 bg-blue-100 text-center pt-20">
+  <h2 class="text-3xl font-bold text-blue-600 mb-4">Our Projects</h2>
+  <p class="text-gray-500 mb-10 px-4">
+    We know what buyers are looking for and suggest projects that will bring clients top dollar.
+  </p>
+
+<!-- Wrapper -->
+<div class="relative px-6">
+
+  <!-- Left Arrow -->
+  <button onclick="document.getElementById('projectScroll').scrollBy({ left: -300, behavior: 'smooth' })"
+          class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow z-10">
+    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <!-- Scrollable Card Container -->
+  <div id="projectScroll" class="flex overflow-x-auto gap-6 py-4 scroll-smooth no-scrollbar">
+    
+    <!-- Project Card -->
+    <div th:each="project : ${projects}" class="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+      
+      <!-- Image -->
+      <img th:src="@{${project.image}}"  alt="Project Image" class="rounded-t-lg w-full h-36 object-cover" />
+      
+      <!-- Content -->
+      <div class="p-4">
+        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900" th:text="${project.name}">Project Title</h5>
+        <p class="mb-3 text-sm text-gray-700 line-clamp-2" th:text="${project.description}">Project description goes here...</p>
+        
+        <div href="" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-blue-300">
+          Read more
+          <svg class="w-3.5 h-3.5 ms-2" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 14 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg>
+        </div>
+         
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right Arrow -->
+  <button onclick="document.getElementById('projectScroll').scrollBy({ left: 300, behavior: 'smooth' })"
+          class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow z-10">
+    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+</div>
+</section>
+
+ 
+
+
+
+  <!-- Happy Clients Section -->
+<section id="clients" class="py-16 bg-white text-center h-[600px]">
+  <h2 class="text-3xl font-bold text-blue-600 mb-4">Happy Clients</h2>
+  <p class="text-gray-500 mb-10">What our clients say about us</p>
+
+ <div>
+ <div class="relative px-6">
+  <!-- Left Arrow -->
+   <button onclick="scrollCardsLeft()" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow">
+    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+<!-- Card Container -->
+<!-- Card Container -->
+<div id="cardContainer" class="flex items-center overflow-x-auto gap-6 py-2 scroll-smooth no-scrollbar">
+  <div th:each="client : ${clients}"
+       class="flex-shrink-0 w-60 h-80 bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+       
+    <!-- Top Section: Image + Description -->
+    <img th:src="@{${client.image}}" alt="Client Image" class="w-20 h-20 rounded-full  shadow mb-3 object-cover" />
+    <p class="text-sm text-gray-700" th:text="${client.description}">Feedback...</p>
+
+    <!-- Bottom Section: Name + Designation -->
+    <div class="text-center mt-4">
+      <h4 class="text-lg font-semibold text-blue-800" th:text="${client.name}">Client Name</h4>
+      <p class="text-sm text-gray-500" th:text="${client.designation}">Designation</p>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Right Arrow -->
+  <button onclick="scrollCardsRight()" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow">
+    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+  <style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+</style>
+  
+</div>
+ 
+ </div>
+</section>
+
+<!--last section --> 
+<section class="relative h-[400px] flex items-center justify-center text-center text-white bg-cover bg-center" style="background-image: url('/image/livingroom.jpg');">
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="relative z-10 px-4">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4">
+      Learn more about our listing process, as well as our<br />
+      additional staging and design work.
+    </h2>
+    <a href="#" class="bg-white text-black px-6 py-2 font-semibold rounded hover:bg-gray-100 transition">
+      LEARN MORE
+    </a>
+  </div>
+</section>
+
+<!-- Newsletter + Footer Section -->
+<section class="bg-blue-600 text-white py-8 px-4">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
+    
+    <!-- Navigation Links -->
+    <div class="flex flex-wrap justify-center gap-6 text-sm font-medium">
+      <a href="/" class="hover:underline">Home</a>
+      <a href="#services" class="hover:underline">Services</a>
+      <a href="#projects" class="hover:underline">Projects</a>
+      <a href="#testimonials" class="hover:underline">Testimonials</a>
+      <a href="#contact" class="hover:underline">Contact</a>
+      <a href="#" class="hover:underline">Subscribe Us</a>
+    </div>
+
+    <!-- Email Subscribe Form -->
+    <form th:action="@{'/admin/subscriber'}" method="post" class="flex gap-2">
+      <input type="email" name="email" placeholder="Enter Email Address" class="px-4 py-2 rounded-md text-black w-64" required />
+      <button type="submit" class="bg-white text-blue-600 font-semibold px-4 py-2 rounded-md hover:bg-gray-100 transition">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer Bottom Bar -->
+<footer class="bg-gray-900 text-white py-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+    
+    <!-- Left side -->
+    <p class="text-sm mb-2 md:mb-0">&copy; All Rights Reserved 2025</p>
+
+    <!-- Center  -->
+    <div class="flex items-center space-x-1">
+      <img src="/image/logo2.png" alt="Logo" class="h-5" />
+      <span class="font-semibold">Real</span>
+      <span class="font-light">trust</span>
+    </div>
+
+    <!-- Right side-->
+    <div class="flex space-x-4 mt-2 md:mt-0">
+      <a href="#" class="hover:text-gray-400"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="hover:text-gray-400"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="hover:text-gray-400"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+</div>
+</body>
+</html>

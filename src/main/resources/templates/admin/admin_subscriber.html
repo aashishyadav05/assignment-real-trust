@@ -1,0 +1,32 @@
+<!-- templates/admin_contacts.html -->
+<div th:replace="~{base::parent(~{::#content}, ~{::title})}">
+  <title>View Email</title>
+
+  <div id="content" class="max-w-4xl mx-auto mt-10 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg pt-16">
+     <!-- Go to Admin Dashboard Button -->
+    <div class="mb-4">
+      <a th:href="@{'/admin/dashboard'}" class="text-blue-600 hover:text-blue-800 font-semibold">
+        ← Back to Admin Dashboard
+      </a>
+    </div>
+   
+    <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6">Subscriber Emails</h2>
+
+    <div class="relative overflow-x-auto">
+      <table class="w-full text-sm text-left text-gray-600 dark:text-gray-300">
+        <thead class="text-xs uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
+          <tr>
+            <th class="px-6 py-3">#</th>
+            <th class="px-6 py-3">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="subscriber, iterStat : ${subscriber}" class="bg-white dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" th:text="${iterStat.index + 1}">1</td>
+            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white" th:text="${subscriber.email}">aashish@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

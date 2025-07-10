@@ -1,0 +1,25 @@
+<div th:replace="~{base::parent(~{::#content}, ~{::title})}">
+  <title>Add Client</title>
+
+  <div id="content" class="max-w-xl mx-auto bg-white shadow p-6 mt-10 rounded">
+
+    <!-- Go to Admin Dashboard Button -->
+    <div class="mb-4">
+      <a th:href="@{'/admin/dashboard'}" class="text-blue-600 hover:text-blue-800 font-semibold">
+        ← Back to Admin Dashboard
+      </a>
+    </div>
+
+    <h2 class="text-xl text-blue-600 font-bold mb-4 text-center">Add Happy Client</h2>
+
+    <form method="post" enctype="multipart/form-data" th:action="@{'/admin/client/save'}" class="text-black space-y-4">
+      <input type="text" name="name" placeholder="Client Name" class="w-full border px-4 py-2 rounded" required>
+      <input type="text" name="designation" placeholder="Designation" class="w-full border px-4 py-2 rounded" required>
+      <textarea name="description" placeholder="Description" class="w-full border px-4 py-2 rounded" required></textarea>
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Add Client</button>
+    </form>
+
+    <p th:if="${msg}" class="text-green-600 mt-4" th:text="${msg}"></p>
+  </div>
+</div>

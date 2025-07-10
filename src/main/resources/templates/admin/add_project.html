@@ -1,0 +1,23 @@
+<!-- templates/add_project.html -->
+<div th:replace="~{base::parent(~{::#content}, ~{::title})}">
+  <title>Add Project</title>
+
+  <div id="content" class="max-w-xl text-black mx-auto bg-white shadow p-6 mt-10 rounded">
+    <!-- Go to Admin Dashboard Button -->
+    <div class="mb-4">
+      <a th:href="@{'/admin/dashboard'}" class="text-blue-600 hover:text-blue-800 font-semibold">
+        ← Back to Admin Dashboard
+      </a>
+    </div>
+  
+    <h2 class="text-xl font-bold mb-4 text-center">Add Project</h2>
+    <form method="post" enctype="multipart/form-data" action="/admin/project/add" class="space-y-4">
+      <input type="text" name="name" placeholder="Project Name" class="w-full border px-4 py-2 rounded" required>
+      <textarea name="description" placeholder="Description" class="w-full border px-4 py-2 rounded" required></textarea>
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit" class="bg-blue-600 px-6 py-2 rounded hover:bg-blue-700">Add Project</button>
+    </form>
+
+    <p th:if="${msg}" class="text-green-600 mt-4" th:text="${msg}"></p>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!-- templates/admin_dashboard.html -->
+<div th:replace="~{base::parent(~{::#content}, ~{::title})}">
+  <title>Admin Dashboard</title>
+
+  <div id="content" class=" flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-900 text-white min-h-screen p-6">
+      <h2 class="text-2xl font-bold mb-8">Admin Panel</h2>
+
+      <nav class="space-y-4">
+        <a th:href="@{'/home'}" class="block px-4 py-2 rounded hover:bg-blue-700">  # visit home</a>
+        <a th:href="@{'/admin/project/addform'}" class="block px-4 py-2 rounded hover:bg-blue-700">➕ Add Project</a>
+        <a th:href="@{'/admin/contacts'}" class="block px-4 py-2 rounded hover:bg-blue-700">📥 View Contacts</a>
+        <a th:href="@{'/admin/client/add'}" class="block px-4 py-2 rounded hover:bg-blue-700">➕ Add Client</a>
+        <a th:href="@{'/admin/view_email'}" class="block px-4 py-2 rounded hover:bg-blue-700">📬 View Subscribers</a>
+        <a th:href="@{'/home'}" class="block px-4 py-2 rounded hover:bg-red-700 bg-red-600">🚪 Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10 bg-gray-50">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold text-blue-800 mb-4">Welcome, Admin 👋</h1>
+        <p class="text-gray-600 text-lg">Use the sidebar to manage your website content.</p>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded shadow border-t-4 border-blue-600">
+            <h3 class="text-xl font-bold text-blue-700">Projects</h3>
+            <p class="text-gray-600">Add and manage all your projects.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded shadow border-t-4 border-green-600">
+            <h3 class="text-xl font-bold text-green-700">Contacts</h3>
+            <p class="text-gray-600">View all contact form submissions.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded shadow border-t-4 border-yellow-600">
+            <h3 class="text-xl font-bold text-yellow-700">Clients</h3>
+            <p class="text-gray-600">Add and show happy clients.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded shadow border-t-4 border-purple-600">
+            <h3 class="text-xl font-bold text-purple-700">Subscribers</h3>
+            <p class="text-gray-600">Manage newsletter subscriptions.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
